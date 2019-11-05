@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="css/skeleton.css">
 	<link rel="stylesheet" href="css/layout.css">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -16,6 +16,7 @@
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="js/jquery.mobilemenu.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.js"></script>
 	<script>
 		$(document).ready(function(){
 			$('#responsive-menu').mobileMenu();
@@ -26,10 +27,43 @@
 			$('select[name=companysize]').selectmenu();
 			$('input[type=submit').button();
   		} );
+		  $(window).scroll(function(){
+    if ($(this).scrollTop() > 100) {
+        $('#back-to-top').fadeIn();
+    } else {
+        $('#back-to-top').fadeOut();
+    }
+	});
+		$(".back-to-top").on("click",function(event){
+			event.preventDefault();
+			$('html','body').animate({
+				scrollTop : 0
+			},'slow');
+		});
 	</script>
+	<style>
+		#back-to-top{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: black;
+    color: #fff;
+    padding: 30px 30px;
+    display: none;
+    transition: .5s;
+    font-size: 20px;
+}
+ 
+#back-to-top:focus, #back-to-top:hover{
+    color: #fff;
+    text-decoration: none;
+    background: red;
+}
+	</style>
 </head>
 <body>
 	<main class="container">
+		<a id="back-to-top" href="#"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
 		<figure class="three columns">
 			<img src="images/logo.gif" class="scale-with-grid" alt="">
 		</figure>
